@@ -225,11 +225,14 @@ const capitalizarPalavras = (frase) => {
 	const fraseSeparada = frase.split(" ");
 
 	for (let i = 0; i < fraseSeparada.length; i++) {
-		
+		fraseSeparada[i] = fraseSeparada[i].charAt(0).toUpperCase() + fraseSeparada[i].slice(1);
 	}
 
-	return iniciais;
+	return fraseSeparada.join(" ");
 };
+
+console.log(capitalizarPalavras("javascript é incrível"));
+
 
 // ----------------------------
 // 💡 Desafio Bônus 21
@@ -237,11 +240,28 @@ const capitalizarPalavras = (frase) => {
 // Considere que as palavras estão separadas por espaço.
 // ----------------------------
 
+const contadorDePalavras = (frase) => {
+    const fraseSeparada = frase.split(' ')
+
+    return fraseSeparada.length
+}
+
+console.log(contadorDePalavras('eu sou apenas uma frase com 8 palavras'));
+
 // ----------------------------
 // 💡 Desafio Bônus 22
 // Crie uma função que substitua todos os espaços de uma string por underline "_"
 // Ex: "isso é um teste" → "isso_é_um_teste"
 // ----------------------------
+
+const substituirEspacos = (frase) => {
+    const fraseSeparada = frase.split(' ')
+
+    return fraseSeparada.join('_')
+}
+
+console.log(substituirEspacos('isso é um teste'));
+
 
 // ----------------------------
 // 💡 Desafio Bônus 23
@@ -249,14 +269,57 @@ const capitalizarPalavras = (frase) => {
 // Ex: "ana", "arara", "radar" → true
 // ----------------------------
 
+const verificadorDePalindromo = (palavra) => {
+    for (let i = 0; i < palavra.length; i++) {
+        const ultimaPosicao = palavra.length - 1
+        const letra = palavra[i];
+        const letraInvertida = palavra[ultimaPosicao - i];
+
+        if (letra !== letraInvertida) {
+            return false;
+        }
+    }
+
+    return true;
+    
+}
+
+console.log(`arara é um palíndromo? ${verificadorDePalindromo('arara')}`);
+console.log(`nayane é um palíndromo? ${verificadorDePalindromo('nayane')}`);
+
+
 // ----------------------------
 // 💡 Desafio Bônus 24
 // Crie uma função que simule o método repeat() sem usá-lo.
 // Receba uma string e um número, e retorne a string repetida esse número de vezes.
 // ----------------------------
 
+const repetirString = (string, numero) => {
+    let novaString = ''
+
+    for (let i = 0; i < numero; i++) {
+        novaString += string
+    }
+    return novaString
+}
+
+console.log(repetirString('aeiou', 55)); /* não vou contar se foi o numero certo de vezes mas spammou */
+
 // ----------------------------
 // 💡 Desafio Bônus 25
 // Crie uma função que receba uma string e remova todos os números dela.
 // Ex: "abc123def456" → "abcdef"
 // ----------------------------
+
+const removerNumeros = (string) => {
+    let novaString = '';
+    for (let i = 0; i < string.length; i++) {
+        if (!(parseInt(string[i]))) {
+            novaString += string[i];
+        }
+    }
+    return novaString;
+}
+
+console.log(removerNumeros("lhsjhaka6sd+a45d1a5as5ad4a+d4a4sda6asdasd4ad4afaf4s6g6sgs4g+4sd84ffd8g48err84")); /* deu certo */
+
